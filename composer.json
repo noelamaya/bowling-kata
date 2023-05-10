@@ -1,0 +1,50 @@
+{
+  "name": "noelamaya/bowling-kata",
+  "description": "Bowling kata",
+  "authors": [
+    {
+      "name": "Noel Amaya",
+      "email": "noelamaya84@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10",
+    "mockery/mockery": "dev-master",
+    "vimeo/psalm": "^5.0@dev",
+    "phpstan/phpstan": "1.10.x-dev",
+    "friendsofphp/php-cs-fixer": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "BowlingKata\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "check-all": [
+      "@cs-fix",
+      "@test",
+      "@phpstan",
+      "@psalm"
+    ],
+    "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php --colors=always tests",
+    "psalm": "vendor/bin/psalm --show-info=true",
+    "phpstan": "vendor/bin/phpstan analyse src tests",
+    "cs-fix": "vendor/bin/php-cs-fixer fix src --rules=@PSR12"
+  },
+  "scripts-descriptions": {
+    "test": "Run PHPUnit tests.",
+    "phpstan": "Perform analysis on code",
+    "psalm": "Run static analysis tool",
+    "check-all": "Run tests and analysis",
+    "cs-fix": "Fix code styling"
+  },
+  "minimum-stability": "dev"
+}
